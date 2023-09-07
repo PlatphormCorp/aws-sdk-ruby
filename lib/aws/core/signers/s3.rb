@@ -57,7 +57,7 @@ module AWS
           secret = credentials.secret_access_key
           signature = self.class.string_to_sign(req)
           signature = Base.sign(credentials.secret_access_key, signature, 'sha1')
-          URI.escape(signature)
+          URI::DEFAULT_PARSER.escape(signature)
         end
 
         class << self
